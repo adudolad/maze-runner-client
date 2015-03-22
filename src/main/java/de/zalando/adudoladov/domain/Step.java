@@ -16,20 +16,17 @@ public class Step {
         return direction;
     }
 
-    public void setDirection(final String direction) {
-        this.direction = direction;
-    }
-
     public Point getFrom() {
         return from;
     }
 
-    public void setFrom(final Point from) {
-        this.from = from;
-    }
-
     @Override
     public String toString() {
-        return " position: y = " + from.getY() + ", x = " + from.getX();
+        StringBuffer buffer = new StringBuffer();
+        buffer.append(" position: y = ");
+        buffer.append(from.getY());
+        buffer.append(", x = ");
+        buffer.append(from.getX());
+        return buffer.toString();
     }
 }

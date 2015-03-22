@@ -22,7 +22,14 @@ public class MazePoint extends Point {
     }
 
     public String toString() {
-        return " x = " + super.getX() + ", y = " + super.getY() + "; code = " + code;
+        StringBuffer buffer = new StringBuffer();
+        buffer.append(" x = ");
+        buffer.append(super.getX());
+        buffer.append(", y = ");
+        buffer.append(super.getY());
+        buffer.append("; code = ");
+        buffer.append(code);
+        return buffer.toString();
     }
 
     @Override

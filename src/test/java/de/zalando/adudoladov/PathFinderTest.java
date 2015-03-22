@@ -20,9 +20,16 @@ public class PathFinderTest {
         maze1.put("width", "10");
         mazes.add(maze1);
 
+        HashMap maze2 = new HashMap<>();
+        maze2.put("code", "maze990 992");
+        maze2.put("height", "1000");
+        maze2.put("width", "1000");
+        mazes.add(maze2);
+
         PathFinder pathFinder = PathFinder.getPathFinder();
         pathFinder.setAvailableMazes(mazes);
         Assert.assertTrue(pathFinder.isMazeAvailableOnServer("maze-1"));
+        Assert.assertTrue(pathFinder.isMazeAvailableOnServer("maze990 992"));
     }
 
     @Test

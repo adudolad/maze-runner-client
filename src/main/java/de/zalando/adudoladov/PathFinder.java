@@ -146,11 +146,10 @@ public class PathFinder extends AbstractMaze {
                 if (maze.get("code").equals(mazeName)) {
                     pathFinder.mazeMap = maze;
                     return true;
-                } else {
-                    getLogger().error("Maze \"" + mazeName + "\" doesn't exist on the Maze server");
                 }
             }
 
+            getLogger().error("Maze \"" + mazeName + "\" doesn't exist on the Maze server");
             return false;
 
         } else {
@@ -210,10 +209,11 @@ public class PathFinder extends AbstractMaze {
                 // moving to SOUTH is not possible
             } else {
 
-                // Do the step to defined direction
+                // Do the step to the defined direction
                 nextMazePoint = moveToDirection(current, direction);
             }
 
+            // check if nextMazePoint is not NUL after the last movement
             if (nextMazePoint != null) {
 
                 // If th Exit has been found

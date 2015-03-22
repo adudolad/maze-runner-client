@@ -27,6 +27,13 @@ public class Maze {
     }
 
     public String toString() {
-        return "de.zalando.adudoladov.domain.Maze: " + code + ", height " + height + ", weight" + weight;
+        StringBuffer buffer = new StringBuffer();
+        buffer.append("Maze: ");
+        buffer.append(code);
+        buffer.append(", height ");
+        buffer.append(height);
+        buffer.append(", weight");
+        buffer.append(weight);
+        return buffer.toString();
     }
 }

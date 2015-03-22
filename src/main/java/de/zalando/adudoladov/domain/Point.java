@@ -38,6 +38,11 @@ class Point {
 
     @Override
     public String toString() {
-        return "y: " + y + " x:" + x;
+        StringBuffer buffer = new StringBuffer();
+        buffer.append("y: ");
+        buffer.append(y);
+        buffer.append(", x:");
+        buffer.append(x);
+        return buffer.toString();
     }
 }
