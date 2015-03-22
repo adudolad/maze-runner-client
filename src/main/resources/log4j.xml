@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<!-- Only for locale testing. This file will not make it into any distribution -->
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <appender name="fileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="./target/maze_client_log.log"/>
+        <param name="Append" value="true"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%p] %l - %m%n"/>
+        </layout>
+    </appender>
+
+    <logger name="de.zalando.adudoladov">
+        <level value="info"/>
+    </logger>
+
+    <root>
+        <priority value="error"/>
+        <appender-ref ref="fileAppender"/>
+    </root>
+
+</log4j:configuration>
