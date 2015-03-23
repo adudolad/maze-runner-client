@@ -10,7 +10,8 @@ import java.util.List;
 import java.util.Map;
 
 import de.zalando.adudoladov.client.MazeServiceClient;
-import de.zalando.adudoladov.client.MazeServiceImpl;
+import de.zalando.adudoladov.client.MazeServiceClientImpl;
+import de.zalando.adudoladov.domain.AbstractMaze;
 import de.zalando.adudoladov.domain.Directions;
 import de.zalando.adudoladov.domain.MazePoint;
 import de.zalando.adudoladov.domain.Step;
@@ -42,16 +43,18 @@ public class PathFinder extends AbstractMaze {
     }
 
     public static void main(final String[] args) {
+
+        // init
         getPathFinder();
         pathFinder.pathToExit = new ArrayList<>();
 
         MazePoint currentPoint = null;
 
-        // Input parameter verification
+        // Input parameter validation
         // Command line parameters: code (maze code) and url (URL to maze service)
         if (args.length == 2) {
             pathFinder.requestedMaze = args[0];
-            mazeServiceClient = new MazeServiceImpl(args[1]);
+            mazeServiceClient = new MazeServiceClientImpl(args[1]);
         } else {
             final String message = "Command line parameters: code (maze code) and url (URL to maze service)";
             getLogger().error(message);
@@ -59,18 +62,20 @@ public class PathFinder extends AbstractMaze {
             return;
         }
 
-        // Request all mazes on the server
+        // Request all mazes from the server
         pathFinder.getAllMazesFromServer();
 
-        // Search for a Maze by its name in the list of available mazes
+        // Search a Maze by its name in the list of available mazes
         if (pathFinder.isMazeAvailableOnServer(pathFinder.requestedMaze)) {
 
             // If the Maze is found, request its start point
             currentPoint = pathFinder.getMazeStartPoint();
+
+            // If StartPoint is null -> exit. Logging is in getMazeStartPoint()
             if (currentPoint == null) {
                 return;
             }
-
+            // Maze is not found by its name
         } else {
             final String message = "Maze \"" + pathFinder.requestedMaze + "\" is not found";
             getLogger().info(message);
@@ -116,6 +121,9 @@ public class PathFinder extends AbstractMaze {
             System.err.println(message);
             getLogger().error(message);
         } else {
+
+            // The Path to Exit is found
+            // Print, log it and exit
             getLogger().info("The path is found in " + pathFinder.requestedMaze + " : ");
             System.out.println("The path is found in " + pathFinder.requestedMaze + " : ");
 

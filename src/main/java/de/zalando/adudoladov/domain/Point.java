@@ -1,7 +1,5 @@
 package de.zalando.adudoladov.domain;
 
-import de.zalando.adudoladov.AbstractMaze;
-
 /**
  * Created by adudoladov on 20/03/15.
  */
